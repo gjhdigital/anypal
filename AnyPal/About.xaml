@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             ControlTemplate="{StaticResource MainTemplate}"
+             x:Class="AnyPal.About"
+             Title="About" >
+
+    <StackLayout VerticalOptions="FillAndExpand">
+        <Frame x:Name="frmContacts" VerticalOptions="FillAndExpand"
+               BackgroundColor="White" Margin="10,0,10,20">
+
+            <ScrollView x:Name="scrlView" VerticalScrollBarVisibility="Never">
+                <StackLayout x:Name="stk" Orientation="Vertical"></StackLayout>
+            </ScrollView>
+
+        </Frame>
+
+    </StackLayout>
+
+    
+</ContentPage>

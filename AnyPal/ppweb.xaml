@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             ControlTemplate="{StaticResource ModalTemplate}"
+             x:Class="AnyPal.ppweb"
+             >
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Label Text="Add Recipient to your AnyPal contacts?"></Label>
+                <Button x:Name="btnSaveRecipient" Text="Save" Clicked="btnSaveRecipient_Clicked"></Button>
+
+                <Label x:Name="lblMessage" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

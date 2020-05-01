@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnyPal.ContactDetails"
+             ControlTemplate="{StaticResource ModelTemplate}"
+             Title="Contact Details">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Frame>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <Label></Label>
+            <Entry x:Name="txtEmail" HorizontalOptions="FillAndExpand"></Entry>
+            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked" HorizontalOptions="FillAndExpand"></Button>
+            <Label x:Name="lblMessage" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"></Label>
+        </StackLayout>
+            </Frame>
+    </ScrollView>
+</ContentPage>

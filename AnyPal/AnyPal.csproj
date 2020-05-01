@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\anypal.PNG" />
+    <None Remove="Images\paynowbutton.png" />
+    <None Remove="Images\contacts.png" />
+    <None Remove="Images\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\anypal.PNG" />
+    <EmbeddedResource Include="Images\paynowbutton.png" />
+    
+    <EmbeddedResource Include="Images\contacts.png" />
+    <EmbeddedResource Include="Images\splash.png" />
+  </ItemGroup>
+</Project>

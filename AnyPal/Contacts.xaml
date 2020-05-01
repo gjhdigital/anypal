@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AnyPal.Contacts"
+             ControlTemplate="{StaticResource MainTemplate}"
+             Title="Contacts">
+
+    <StackLayout>
+    
+        <Frame x:Name="frmContacts" VerticalOptions="FillAndExpand"
+               BackgroundColor="AliceBlue" Margin="10,0,10,20">
+
+            <StackLayout Margin="0">
+                <Grid Padding="0" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.90*" />
+                        <ColumnDefinition Width="0.10*" />                        
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" FontSize="20" HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                       Text="My Contacts"></Label>
+
+                    <Button x:Name="btnAddNew" Clicked="btnAddNew_Clicked" Grid.Column="1" Grid.Row="0"
+                            Margin="0" Padding="0" FontSize="20" 
+                        HorizontalOptions="End" TextColor="Black" Text="+"
+                            BackgroundColor="Transparent" BorderWidth="0" BorderColor="Transparent" ></Button>
+                </Grid>
+                
+            <ListView x:Name="lstContacts" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="5" Margin="0">
+                                 <Label TextColor="Black" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="{Binding Email}" Font="Bold, Medium" />
+                                <Label TextColor="Black" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Text="{Binding Name}" Font="Small" />
+                             </StackLayout>                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                </StackLayout>
+        </Frame>
+
+        <Frame x:Name="frmDetails" IsVisible="False" BackgroundColor="AliceBlue" Margin="10,0,10,20" VerticalOptions="FillAndExpand" >
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="Contact Details" FontSize="20" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+
+                    <Label Margin="0,20,0,0" Text="Name"></Label>
+                    <Entry x:Name="txtName" BackgroundColor="White" Placeholder="(optional)" HorizontalOptions="FillAndExpand"></Entry>
+
+                    <Label Text="Recipient's Email"></Label>
+                    <Entry x:Name="txtEmail" BackgroundColor="White" Placeholder="(required)" HorizontalOptions="FillAndExpand"></Entry>
+                    <Button x:Name="btnSave" Text="Save" BackgroundColor="Transparent" FontSize="Medium" Clicked="btnSave_Clicked" HorizontalOptions="FillAndExpand"></Button>
+                    <Button x:Name="btnCancel" Text="Cancel" Margin="20" FontSize="Small" Clicked="btnCancel_Clicked" HorizontalOptions="FillAndExpand"></Button>
+                    <Label x:Name="lblMessage" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"></Label>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+
+    
+    </StackLayout>
+
+
+
+
+</ContentPage>

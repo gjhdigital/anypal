@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="AnyPal.MainPage"
+             Title="Send Money"
+             ControlTemplate="{StaticResource MainTemplate}">
+
+    <StackLayout VerticalOptions="FillAndExpand">
+        
+        <Frame VerticalOptions="FillAndExpand" Margin="10,0,10,20">
+        <ScrollView Padding="0,5" VerticalScrollBarVisibility="Never">    
+            <StackLayout Orientation="Vertical">
+                <StackLayout x:Name="frmPayment" >
+
+                    <Label Text="Send Money" Padding="0,10" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+
+            <Label Text="Payment For:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Entry x:Name="txtItemName" Placeholder="(required)*" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+
+             <Label Text="Amount:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Entry x:Name="txtAmount" Keyboard="Numeric" Placeholder="(required)*" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+
+            <Label Text="Item Number:" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            <Entry x:Name="txtItemNumber" Placeholder="(optional)" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ></Entry>
+
+             <!--<StackLayout Orientation="Vertical" Padding="0,20">
+            <Label Text="the person you are sending money too" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                 </StackLayout>-->
+
+                <Label Text="Recipient's PayPal Email" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.90*" />
+                        <ColumnDefinition Width="0.10*" />                        
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="txtEmail" Grid.Column="0" Keyboard="Email" Placeholder="(required)*" VerticalOptions="CenterAndExpand" ></Entry>
+                    <ImageButton x:Name="btnContacts" Clicked="btnContacts_Clicked" Grid.Column="1" WidthRequest="30" HorizontalOptions="End" BackgroundColor="Transparent"></ImageButton>
+                </Grid>
+            
+                <StackLayout Orientation="Vertical" Padding="0,20">
+                    <ImageButton x:Name="btnPayNow" Clicked="btnPayNow_Clicked" BackgroundColor="Transparent" ></ImageButton>
+                 </StackLayout>
+            </StackLayout>
+
+                <StackLayout x:Name="frmAddContact" Orientation="Vertical" IsVisible="False">
+                    <Label x:Name="lblSaveContact" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>                    
+                    
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.50*" />
+                        <ColumnDefinition Width="0.50*" />                        
+                    </Grid.ColumnDefinitions>
+                    
+                    </Grid>
+                    <Button x:Name="btnNewContact" Clicked="btnNewContact_Clicked" Grid.Column="0" Text="Yes"></Button>
+                    <Button x:Name="btnCancelContact" Margin="20" Clicked="btnCancelContact_Clicked" Grid.Column="1" Text="No"></Button>
+
+                </StackLayout>
+
+
+            </StackLayout>
+</ScrollView>
+        </Frame>
+        
+    </StackLayout>
+</ContentPage>
