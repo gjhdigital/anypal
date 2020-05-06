@@ -56,29 +56,7 @@ namespace AnyPal
         {
             string msg = "";// IsValid();
             Entry obj = IsValid2() as Entry;
-
-            /*
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                try
-                {
-                    await obj.TranslateTo(-15, 0, 50);
-                    await obj.TranslateTo(15, 0, 50);
-                    await obj.TranslateTo(-10, 0, 50);
-                    await obj.TranslateTo(10, 0, 50);
-                    await obj.TranslateTo(-5, 0, 50);
-                    await obj.TranslateTo(5, 0, 50);
-                    obj.TranslationX = 0;
-
-                }
-                finally
-                {
-                    //_isAnimating = false;
-                }
-            });
-            */
             
-
             //if (!string.IsNullOrEmpty(msg))
             if (obj != null)
             {
@@ -116,10 +94,12 @@ namespace AnyPal
                 {
                     payment.ItemNumber = "001";
                 }
-                string url = "https://www.paypal.com/cgi-bin/webscr?cmd=_cart";
-                url += "&business=" + payment.Email + "&add=1&quantity=1";
-                url += "&item_number=" + payment.ItemNumber + "&amount=" + payment.Amount;
-                url += "&item_name=" + payment.ItemName + "&bn=gjhdigital";
+                //string url = "https://www.paypal.com/cgi-bin/webscr?cmd=_cart";
+                //url += "&business=" + payment.Email + "&add=1&quantity=1";
+                //url += "&item_number=" + payment.ItemNumber + "&amount=" + payment.Amount;
+                //url += "&item_name=" + payment.ItemName + "&bn=gjhdigital";
+
+                string url = new Models.PayPalUrl().PayPalLink(payment);
 
                 //await Launcher.OpenAsync(url);
                 await Task.WhenAll(
@@ -197,7 +177,7 @@ namespace AnyPal
 
         async void btnContacts_Clicked(System.Object sender, System.EventArgs e)
         {
-            if(ContactEnum.Count > 0)
+            if (ContactEnum.Count > 0)
             {
                 string[] sContacts = new string[ContactEnum.Count];
                 for(int i =0; i < ContactEnum.Count;  i++)
@@ -208,6 +188,11 @@ namespace AnyPal
                 if (action.Equals("Cancel") == false)
                 {
                     txtEmail.Text = action;
+                    Models.Contact c = ContactEnum.Where(x => x.Email == action).FirstOrDefault();
+                    if (!string.IsNullOrEmpty(c.Name))
+                    {
+                        txtItemName.Text = c.Name;
+                    }
                 }
             }
             else
@@ -221,6 +206,7 @@ namespace AnyPal
         {
             Models.Contact c = new Models.Contact();
             c.Email = txtEmail.Text;
+            c.Name = txtItemName.Text;
             bool bSaved = c.AddItem(c);
 
             if (bSaved)
@@ -242,6 +228,33 @@ namespace AnyPal
             ClearForm();
             frmAddContact.IsVisible = false;
             frmPayment.IsVisible = true;
+        }
+        async void btnTryAgain_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Models.Payment payment = new Models.Payment()
+            {
+                ItemName = txtItemName.Text,
+                Amount = decimal.Parse(txtAmount.Text),
+                ItemNumber = txtItemNumber.Text,
+                Email = txtEmail.Text
+            };
+            //await Navigation.PushModalAsync(new ppweb(payment), true);
+            if (string.IsNullOrEmpty(payment.ItemNumber))
+            {
+                payment.ItemNumber = "001";
+            }
+            string url = new Models.PayPalUrl().PayPalLink(payment);
+
+            //await Launcher.OpenAsync(url);
+            await Task.WhenAll(
+                Browser.OpenAsync(url, new BrowserLaunchOptions
+                {
+                    LaunchMode = BrowserLaunchMode.SystemPreferred,
+                    TitleMode = BrowserTitleMode.Default,
+                    PreferredToolbarColor = Color.FromHex(App.AnyPalBlue),
+                    PreferredControlColor = Color.White
+                })
+            );
         }
     }
 }

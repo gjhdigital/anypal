@@ -43,6 +43,9 @@
                 <StackLayout Orientation="Vertical" Padding="0,20">
                     <ImageButton x:Name="btnPayNow" Clicked="btnPayNow_Clicked" BackgroundColor="Transparent" ></ImageButton>
                  </StackLayout>
+                    <StackLayout>
+                        <Label FontSize="Small" HorizontalTextAlignment="Center" Text="Recipient's PayPal Email: This is the PayPal user you are sending money too. They must already have a PayPal account. You do not need one, but they do in order to receive money." />
+                    </StackLayout>
             </StackLayout>
 
                 <StackLayout x:Name="frmAddContact" Orientation="Vertical" IsVisible="False">
@@ -57,6 +60,11 @@
                     </Grid>
                     <Button x:Name="btnNewContact" Clicked="btnNewContact_Clicked" Grid.Column="0" Text="Yes"></Button>
                     <Button x:Name="btnCancelContact" Margin="20" Clicked="btnCancelContact_Clicked" Grid.Column="1" Text="No"></Button>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0,40,0,0">
+                        <Label>If you received an error please verify the email you are using to send money to is a valid PayPal account email</Label>
+                        <Button x:Name="btnTryAgain" Text="Try Again" Clicked="btnTryAgain_Clicked" ></Button>
+                    </StackLayout>
 
                 </StackLayout>
 
